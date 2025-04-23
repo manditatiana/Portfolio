@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir: docs   # ⬅️ move this here!
+
+website:
+  title: "Portfolio"
+  site-url: "https://manditatiana.github.io/Portfolio/"
+  repo-url: "https://github.com/manditatiana/Portfolio"
+  repo-actions: [edit, issue]
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About Me
+      - href: Projects.qmd
+        text: Projects
+
+
+format:
+  html:
+    theme:
+      - Minty
+    css: styles.css
+    toc: true
+
+
+
