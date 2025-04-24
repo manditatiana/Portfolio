@@ -1,16 +1,16 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\nX = 1 + 5\nX  \n\n[1] 6"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Portfolio",
     "section": "",
     "text": "This is an example of some of my research."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\nX = 1 + 5\nX  \n\n[1] 6"
   }
 ]
