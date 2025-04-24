@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://manditatiana.github.io/Portfolio/about.html</loc>
-    <lastmod>2025-04-24T21:39:37.494Z</lastmod>
+    <loc>https://manditatiana.github.io/Portfolio/Datasci.html</loc>
+    <lastmod>2025-04-24T21:55:38.561Z</lastmod>
   </url>
   <url>
     <loc>https://manditatiana.github.io/Portfolio/index.html</loc>
-    <lastmod>2025-04-24T21:31:59.683Z</lastmod>
+    <lastmod>2025-04-24T21:59:51.077Z</lastmod>
+  </url>
+  <url>
+    <loc>https://manditatiana.github.io/Portfolio/about.html</loc>
+    <lastmod>2025-04-24T22:02:53.441Z</lastmod>
   </url>
 </urlset>

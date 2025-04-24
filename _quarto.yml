@@ -3,17 +3,19 @@ project:
   output-dir: docs   # ⬅️ move this here!
 
 website:
-  title: "Portfolio"
+  title: "MUH Portfolio"
   site-url: "https://manditatiana.github.io/Portfolio/"
   repo-url: "https://github.com/manditatiana/Portfolio"
   repo-actions: [edit, issue]
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - href: about.qmd
-        text: About Me
-      
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - index.qmd
+      - section: "Projects"
+        href: about.qmd
+        contents:
+         - Datasci.qmd
 
 
 format:
