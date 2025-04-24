@@ -15,8 +15,6 @@ website:
         text: About Me
       - text: "Projects"
         menu:
-          - href: Datasci.qmd
-            text: Data Science Project
       
 
 
