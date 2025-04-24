@@ -13,8 +13,10 @@ website:
         text: Home
       - href: about.qmd
         text: About Me
-      - href: Datasci.qmd
-        text: Data Science Project
+      - text: "Projects"
+        menu:
+          - href: Datasci.qmd
+            text: Data Science Project
       
 
 
