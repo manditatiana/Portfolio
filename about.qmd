@@ -5,6 +5,7 @@ format: html
 
 ## Mandi Urbizo-Haukjaer
 
+<<<<<<< HEAD
 :::: {style="display: flex; align-items: center;"}
 <img src="images/37660E7C-4F6F-4C07-9769-F0553B182BE7.jpeg" alt="Mandi&apos;s Photo" style="width: 250px; height: auto; margin-right: 20px;"/>
 
@@ -18,3 +19,9 @@ Mandi completed her Bachelor’s degree in Psychology at the University of Georg
 Email: [award32\@uic.edu](award32@uic.edu)
 
 CV: [MUH CV 4.14.25](https://drive.google.com/file/d/13BgvR_fvY7WjIg3xhYvpUSK-NkSiNIG1/view?usp=drive_link)
+=======
+```{r}
+X = 1 + 5
+X  
+```
+>>>>>>> refs/remotes/origin/main

@@ -13,10 +13,15 @@ website:
         text: Home
       - href: about.qmd
         text: About Me
+<<<<<<< HEAD
       - text: "Projects"
         menu:
           - href: Datasci.qmd
             text: Data Science Project
+=======
+      - href: Datasci.qmd
+        text: Data Science Project
+>>>>>>> refs/remotes/origin/main
       
 
 
