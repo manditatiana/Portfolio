@@ -15,8 +15,7 @@ website:
         text: About Me
       - href: Projects.qmd
         text: Projects
-          -  href: SAKLawLang.qmd 
-             text: SAK Law Langugae Eval
+
 
 format:
   html:
