@@ -24,6 +24,8 @@ website:
       background: dark
       contents:
         - about.qmd
+        - text: "Intersectional Work Discrimination Scale"
+          href: EFAworkplace.qmd
         - text: "SAK Law Reform Text Anyalysis"
           href: Datasci.qmd
 

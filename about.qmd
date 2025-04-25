@@ -3,14 +3,14 @@ title: "Project Summaries"
 editor: visual
 ---
 
-This is where project summaries will go
+## Intersectional Work Discrimination Scale Development
 
--   Data Science Paper Code
+This study aims to develop and validate a comprehensive scale for measuring intersectional work discrimination across multiple identities in community psychologists' work units. We adapted and combined two existing scales—the Intersectional Discrimination Index (InDI-D) and the Chronic Work Discrimination and Harassment scale (CWDHS)—to assess the day-to-day and chronic discriminatory experiences faced by individuals in their professional environments. Through exploratory factor analysis (EFA) and parallel analysis, we identified key dimensions of discrimination based on gender, race, and other intersecting identities. The final factor analysis resulted in a one-factor model capturing the core of intersectional work discrimination, with all factor loadings above 0.4. Our findings emphasize the importance of considering multiple identity categories when studying workplace discrimination, particularly in professional settings where individuals may experience unique forms of exclusion and bias. This scale offers a robust tool for future research on work unit discrimination and can be adapted for use in various organizational contexts.
 
--   Dissertations
+## SAK Law Reform Text Anyalysis
 
-    -   Paper 1
+Abstract about this project
 
-    -   Paper 2
+## Religious Hospitals and Toxicology and Emergency Conceptions Administration During SAK  
 
-    -   Paper 3
+Abstract about this project
