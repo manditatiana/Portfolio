@@ -1,6 +1,40 @@
 ---
-title: "Data Science Project"
+title: "How States Write About Survivors:"
 editor: visual
 ---
 
-This is where my datascience project will go
+## A Text Analysis of Sexual Assault Reform Laws
+
+#### Sexual Assault Kit (SAK) Law Reform
+
+-   Backlogs of untested rape kits led to national concern over criminal justice failure.
+
+-   Advocacy groups (e.g., End the Backlog) called for comprehensive reform.
+
+-   "6 Pillars of Reform" Inventory, testing backlogged, testing new, tracking, survivor notification, funding
+
+-   20 states have complete reform, 30 have some reform, 1 has no reform.
+
+#### Language in Legal Text
+
+-   Laws are not value-neutral: wording reflects cultural, political, and ideological positions.
+
+-   Survivor-centered vs system-centered language may signal how seriously states commit to comprehensive reform.
+
+-   Language may influence future legislative momentum.
+
+-   Earliest reform was in 2010 (IL), with 17 states having reform by 2016, and 50 states having some reform by 2024
+
+## **Does the language used in a state’s initial SAK submission reform law predict whether the state ultimately implements all 6 pillars of reform?**
+
+#### Why it matters?
+
+-   Links legal rhetoric to policy implementation and outcomes.
+
+-   Fills a gap in understanding how laws evolve and scale over time.
+
+-   Offers insight for advocacy, policy development, and trauma-informed legislation.
+
+-   Can inform future legislative drafting by identifying which framing supports comprehensive reform.
+
+#### Using ChatGPT to Qualitativly analyze
