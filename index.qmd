@@ -15,4 +15,4 @@ Mandi Urbizo-Haukjaer is a doctoral candidate in the Community and Applied Devel
 
 ## My CV
 
-![](images/MUH CV.pdf)
+![](images/MUH CV.pdf){width="74in" height="8in"}
