@@ -29,7 +29,7 @@ The participants were asked to identify their race and/or ethnicity based on the
 
 ## Analysis
 
-### Clean and visualize data 
+### Clean and visualize data
 
 After loading the necessary packages and data into r, we cleaned the data by using the tiderverse package. We then visualized the data using histograms, tables, and correlation plots to see what the response distrubtion looked like for each item on both scales.
 
@@ -138,7 +138,7 @@ corReorder(pCor)  # Reorder correlation matrix for better interpretation
 
 ```
 
-### Explore Dimenstionality 
+### Explore Dimenstionality
 
 Then we started the test of dimensionality by conducting a Scree test that yielded three factors above the scree line (Kaiser 1960). However, a parallel analysis with 1000 iterations only found two factors passing the 95% threshold (Horn, 1973). Based on this, an exploratory factor analysis (EFA) with oblemin rotation and two factors was conducted to understand the underlying structure of the 17 items. Most items loaded onto the first factor, with items 103, 104, 105, and 106 from the Chronic Work Discrimination and Harassment scale having the highest loadings on the second factor (0.849, 0.824, 0.498, and 0.793, respectively). These four items all focused on assessing the use of bigoted slurs or jokes use by both supervisors and colleagues.
 
@@ -282,3 +282,25 @@ As the community psychology field continues to grow, and the workforce continues
 Overall, these results support the day-to-day subscale of the InDI, which had not been analyzed in this manner before. However, this also demonstrated that redundancy of some items in the Chronic Work Discrimination and Harassment scale. Specifically, the questions regarding the use of bigoted slurs and jokes in the workplace. Based on this, reducing these questions two to questions either focusing on supervisor versus colleagues, or general use versus comments directed at the individual may serve to provide more nuanced information without redundancy. Some limitations of this study are again, the sample being solely made of CPs.
 
 To further validate this scale, another sample with individuals from various fields would showcase if these results would hold outside of community psychology. Additionally, getting a larger sample to be would allow for both a derivative and validation sample. This would allow for better assessment of the scale’s validity. Moreover, in this survey, follow-up questions were asked after each item to see what identity was being targeted by the discriminatory action. This should be further analyzed to see how if the results of scale are gathering information on an array of discriminatory experiences rather than only one (such as solely measuring discriminatory experiences based on race). This would be a good avenue for further research.
+
+## References
+
+Bennett, C. C., Anderson, L. S., Cooper, S., Hassol, L., & Klein, D. C. (1966). Community Psychology: A Report of the Boston Conference on the Education of Psychologists for Community Mental Health. Boston: Boston Univ. 8: South Shore Mental Health Center Biglan A, Ary D. Koehn V, Levings D, Smith S, et al. 1996. Mobilizing positive reinforcement in communities to reduce youth access to tobacco. *Am. J. Community Psychol*, *24*, 625-38.
+
+Bobo, L. D., & Suh, S. (2000). Surveying Racial Discrimination: Analyses from a Multiethnic Labor Market. *Lawrence D. Bobo, Melvin L. Oliver, James H. Johnson, Jr., and Abel Valenzuela, Jr.\~ Eds*, 523-560.
+
+Gerbing, D.W. (2021). lessR: Less Code, More Results. R package version 4.0.3, <https://cran.r-project.org/web/packages/lessR/index.html>.
+
+Horn, W. A. (1973). Minimizing average flow time with parallel machines. *Operations Research*, *21*(3), 846-847.
+
+Lewis, J.A., Neville, H.A., 2015. Construction and initial validation of the Gendered Racial Microaggressions Scale for Black women. J. Counsel. Psychol. 62, 289–302. https://doi.org/10.1037/cou0000062.
+
+McNeilly, M.D., Anderson, N.B., Armstead, C.A., Clark, R., Corbett, M., Robinson, E.L., Pieper, C.F. & Lepisto, E.M. (1996). “The perceived racism scale: A multidimensional assessment of the experience of white racism among African Americans.” *Ethnicity and Disease*. 6, 154-166.
+
+Scheim, A. I., & Bauer, G. R. (2019). The Intersectional Discrimination Index: Development and validation of measures of self-reported enacted and anticipated discrimination for intercategorical analysis. *Social Science & Medicine*, *226*, 225-235.
+
+R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL <https://www.R-project.org/>.
+
+Revelle, W. (2021) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, <https://cran.r-project.org/web/packages/psych/index.html>,.
+
+Williams, D.R. (2016). Measuring discrimination resource. *Scholars at Harvard*. https://scholar.harvard.edu/files/davidrwilliams/files/measuring_discrimination_resource_june_2016.pdf
