@@ -2,12 +2,34 @@
   {
     "objectID": "Datasci.html",
     "href": "Datasci.html",
-    "title": "Data Science Project",
+    "title": "How States Write About Survivors:",
     "section": "",
-    "text": "This is where my datascience project will go",
+    "text": "Backlogs of untested rape kits led to national concern over criminal justice failure.\nAdvocacy groups (e.g., End the Backlog) called for comprehensive reform.\n“6 Pillars of Reform” Inventory, testing backlogged, testing new, tracking, survivor notification, funding\n20 states have complete reform, 30 have some reform, 1 has no reform.\n\n\n\n\n\nLaws are not value-neutral: wording reflects cultural, political, and ideological positions.\nSurvivor-centered vs system-centered language may signal how seriously states commit to comprehensive reform.\nLanguage may influence future legislative momentum.\nEarliest reform was in 2010 (IL), with 17 states having reform by 2016, and 50 states having some reform by 2024",
     "crumbs": [
       "Projects",
-      "Data Science Project"
+      "SAK Law Reform Text Anyalysis"
+    ]
+  },
+  {
+    "objectID": "Datasci.html#a-text-analysis-of-sexual-assault-reform-laws",
+    "href": "Datasci.html#a-text-analysis-of-sexual-assault-reform-laws",
+    "title": "How States Write About Survivors:",
+    "section": "",
+    "text": "Backlogs of untested rape kits led to national concern over criminal justice failure.\nAdvocacy groups (e.g., End the Backlog) called for comprehensive reform.\n“6 Pillars of Reform” Inventory, testing backlogged, testing new, tracking, survivor notification, funding\n20 states have complete reform, 30 have some reform, 1 has no reform.\n\n\n\n\n\nLaws are not value-neutral: wording reflects cultural, political, and ideological positions.\nSurvivor-centered vs system-centered language may signal how seriously states commit to comprehensive reform.\nLanguage may influence future legislative momentum.\nEarliest reform was in 2010 (IL), with 17 states having reform by 2016, and 50 states having some reform by 2024",
+    "crumbs": [
+      "Projects",
+      "SAK Law Reform Text Anyalysis"
+    ]
+  },
+  {
+    "objectID": "Datasci.html#does-the-language-used-in-a-states-initial-sak-submission-reform-law-predict-whether-the-state-ultimately-implements-all-6-pillars-of-reform",
+    "href": "Datasci.html#does-the-language-used-in-a-states-initial-sak-submission-reform-law-predict-whether-the-state-ultimately-implements-all-6-pillars-of-reform",
+    "title": "How States Write About Survivors:",
+    "section": "Does the language used in a state’s initial SAK submission reform law predict whether the state ultimately implements all 6 pillars of reform?",
+    "text": "Does the language used in a state’s initial SAK submission reform law predict whether the state ultimately implements all 6 pillars of reform?\n\nWhy it matters?\n\nLinks legal rhetoric to policy implementation and outcomes.\nFills a gap in understanding how laws evolve and scale over time.\nOffers insight for advocacy, policy development, and trauma-informed legislation.\nCan inform future legislative drafting by identifying which framing supports comprehensive reform.\n\n\n\nUsing ChatGPT to Qualitativly analyze",
+    "crumbs": [
+      "Projects",
+      "SAK Law Reform Text Anyalysis"
     ]
   },
   {
