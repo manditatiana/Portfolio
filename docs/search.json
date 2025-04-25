@@ -13,22 +13,16 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "About Me",
+    "title": "Mandi Urbizo-Haukjaer",
     "section": "",
-    "text": "Mandi Urbizo-Haukjaer is a doctoral candidate in the Community and Applied Developmental program at the University of Illinois Chicago, where she also holds a minor in Quantitative Statistics. She completed her M.A. in Applied Psychology with a concentration in Community Psychology at the University of Cincinnati, where she aslo earned graduate certificates in Women, Gender, and Sexuality Studies, and Applied Behavioral Analysis. Her research focuses on understanding and improving the systems that respond to gender-based violence, particularly within the Latine community. Mandi has worked on numerous research projects exploring topics such as sexual assault response systems, the experiences of survivors, and the role of Neoliberal ideologies in shaping public perceptions of gender violence. Her statistical expertise includes advanced methods such as structural equation modeling, mixed-effects modeling, and nonparametric measures, and she is proficient in R and SPSS for data analysis. Mandi is passionate about using her research and statistical skills to create meaningful change, advocate for marginalized communities, and promote equity within social systems.\n\n\nEmail: award32@uic.edu\nCV: MUH CV 4.14.25",
-    "crumbs": [
-      "About Me"
-    ]
+    "text": "Mandi Urbizo-Haukjaer is a doctoral candidate in the Community and Applied Developmental program at the University of Illinois Chicago, where she also holds a minor in Quantitative Statistics. She completed her M.A. in Applied Psychology with a concentration in Community Psychology at the University of Cincinnati, where she also earned graduate certificates in Women, Gender, and Sexuality Studies, and Applied Behavioral Analysis. Her research focuses on understanding and improving the systems that respond to gender-based violence, particularly within the Latine community. Mandi has worked on numerous research projects exploring topics such as sexual assault response systems, the experiences of survivors, and the role of Neoliberal ideologies in shaping public perceptions of gender violence. Her statistical expertise includes advanced methods such as structural equation modeling, mixed-effects modeling, and nonparametric measures, and she is proficient in R and SPSS for data analysis. Mandi is passionate about using her research and statistical skills to create meaningful change, advocate for marginalized communities, and promote equity within social systems."
   },
   {
-    "objectID": "index.html#mandi-urbizo-haukjaer",
-    "href": "index.html#mandi-urbizo-haukjaer",
-    "title": "About Me",
-    "section": "",
-    "text": "Mandi Urbizo-Haukjaer is a doctoral candidate in the Community and Applied Developmental program at the University of Illinois Chicago, where she also holds a minor in Quantitative Statistics. She completed her M.A. in Applied Psychology with a concentration in Community Psychology at the University of Cincinnati, where she aslo earned graduate certificates in Women, Gender, and Sexuality Studies, and Applied Behavioral Analysis. Her research focuses on understanding and improving the systems that respond to gender-based violence, particularly within the Latine community. Mandi has worked on numerous research projects exploring topics such as sexual assault response systems, the experiences of survivors, and the role of Neoliberal ideologies in shaping public perceptions of gender violence. Her statistical expertise includes advanced methods such as structural equation modeling, mixed-effects modeling, and nonparametric measures, and she is proficient in R and SPSS for data analysis. Mandi is passionate about using her research and statistical skills to create meaningful change, advocate for marginalized communities, and promote equity within social systems.\n\n\nEmail: award32@uic.edu\nCV: MUH CV 4.14.25",
-    "crumbs": [
-      "About Me"
-    ]
+    "objectID": "index.html#my-cv",
+    "href": "index.html#my-cv",
+    "title": "Mandi Urbizo-Haukjaer",
+    "section": "My CV",
+    "text": "My CV"
   },
   {
     "objectID": "about.html",
@@ -37,7 +31,8 @@
     "section": "",
     "text": "This is where project summaries will go\n\nLatine paper Code\nData Science Paper Code\nDissertations\n\nPaper 1\nPaper 2\nPaper 3",
     "crumbs": [
-      "Projects"
+      "Projects",
+      "Project Summaries"
     ]
   }
 ]
