@@ -11,7 +11,7 @@ website:
   navbar:
     background: primary
     search: true
-    left:
+    right:
       - text: "Home"
         href: index.qmd
       - text: "Projects"

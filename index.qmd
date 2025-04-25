@@ -4,15 +4,21 @@ format: html
 ---
 
 :::: {style="display: flex; align-items: center; flex-direction: row-reverse;"}
-![](images/37660E7C-4F6F-4C07-9769-F0553B182BE7.jpeg){alt="Mandi's Photo" style="margin-left: 40px;" fig-alt="Mandi's Photo" width="5000px"}
+![](images/37660E7C-4F6F-4C07-9769-F0553B182BE7.jpeg){alt="Mandi's Photo" style="margin-left: 40px;" fig-alt="Mandi's Photo" width="1000px"}
 
 <div>
 
-Mandi Urbizo-Haukjaer is a doctoral candidate in the Community and Applied Developmental program at the University of Illinois Chicago, where she also holds a minor in Quantitative Statistics. She completed her M.A. in Applied Psychology with a concentration in Community Psychology at the University of Cincinnati, where she also earned graduate certificates in Women, Gender, and Sexuality Studies, and Applied Behavioral Analysis. Her research focuses on understanding and improving the systems that respond to gender-based violence, particularly within the Latine community. Mandi has worked on numerous research projects exploring topics such as sexual assault response systems, the experiences of survivors, and the role of Neoliberal ideologies in shaping public perceptions of gender violence. Her statistical expertise includes advanced methods such as structural equation modeling, mixed-effects modeling, and nonparametric measures, and she is proficient in R and SPSS for data analysis. Mandi is passionate about using her research and statistical skills to create meaningful change, advocate for marginalized communities, and promote equity within social systems.
+Mandi Urbizo-Haukjaer is a doctoral candidate in Community and Prevention Research at the University of Illinois Chicago, with a minor in Quantitative Statistics. She holds an M.A. in Applied Psychology from the University of Cincinnati and graduate certificates in Women, Gender, and Sexuality Studies, and Applied Behavioral Analysis. Mandi’s research focuses on improving systems that respond to gender-based violence. She has experience conducting research on topics such as sexual assault response systems and the impact of neoliberal ideologies on public perceptions of gender violence.
 
 </div>
 ::::
 
-## My CV
+:::: {style="display: flex; align-items: center; flex-direction: row-reverse;"}
+<div>
 
-![](images/MUH CV.pdf){width="74in" height="8in"}
+In addition to her research, Mandi has consulted with organizations like the Illinois Coalition Against Sexual Assault (ICASA) to evaluate programs and deliver data-driven insights. She has also designed and facilitated workshops and has presented her work at several conferences. Mandi excels at translating complex statistical methods, such as structural equation modeling and mixed-effects modeling, into accessible language for diverse audiences. Her work aims to promote equity, advocate for marginalized communities, and foster meaningful systemic change.
+
+</div>
+::::
+
+![](images/MUH%20CV.pdf){fig-align="center" width="9in" height="7in"}
