@@ -37,4 +37,8 @@ editor: visual
 
 -   Can inform future legislative drafting by identifying which framing supports comprehensive reform.
 
+<<<<<<< HEAD
 #### Using ChatGPT to Qualitativly analyze
+=======
+#### Using ChatGPT to Qualitativly analyze 
+>>>>>>> refs/remotes/origin/main
