@@ -3,7 +3,7 @@ title: "Intersectional Work Discrimination Scale Development"
 date: "10/20/2021"
 ---
 
-Community Psychology is a somewhat young field of psychology, with the coining of the term in 1966 marking the beginning of the discipline (Bennett et al., 1966). Since then, community psychologists (CPs) have integrated and worked in a variety of settings including both academic/research orientated positions and more practice/applied settings. However, unlike other fields, understanding of the experiences of CPs has yet to be fully explored. Thus, a study was proposed by the Society for Community Research and Actions (SCRA) to gather information on the types of settings and experiences of community psychologist, specifically of those who are the lone CP in their work unit.
+Community Psychology is a somewhat young field of psychology, with the coining of the term in 1966 marking the beginning of the discipline (Bennett et al., 1966). Since then, community psychologists (CPs) have integrated and worked in a variety of settings including both academic/research orientated positions and more practice/applied settings. However, unlike other fields, understanding of the experiences of CPs has yet to be fully explored. Thus, a study was conducted by Shaw, Chávez, and Voight to gather information on the types of settings and experiences of community psychologist, specifically of those who are the lone CP in their work unit (see Shaw et al., 2022 for more).
 
 Part one of the study included a survey, which needed to include a section to measure discrimination to assess this aspect of CPs experiences. However, there are few studies that look at a person’s intersectional identity as whole regarding their experiences with discrimination in the workplace (Scheim & Bauer, 2019). There are some scales that look at specific cross-section of an identity, such as Gendered Racial Microaggressions Scale for Black women and many that looks at racial discrimination (Lewis & Neville, 2015; Williams, 2016). Consequently, as Scheim & Bauer (2019) noted, it has become common to adapt racial discrimination scales to fit a more intercategorical scope, such as with this survey. Yet, by adapting these scales, and in our case also adapting them to also be specific to a work unit, it can limit their validity. Thus, by combining and adapting two scales, one that is intersectional in nature but does not focus on workplace discrimination, and a second one that is racially focused but designed to measure workplace discrimination, we hope to create a scale that captures overall discrimination experiences based on all aspects of a person’s identity in the workplace.
 
@@ -138,7 +138,7 @@ corReorder(pCor)  # Reorder correlation matrix for better interpretation
 
 ```
 
-### Explore Dimenstionality
+### Explore Dimensionality
 
 Then we started the test of dimensionality by conducting a Scree test that yielded three factors above the scree line (Kaiser 1960). However, a parallel analysis with 1000 iterations only found two factors passing the 95% threshold (Horn, 1973). Based on this, an exploratory factor analysis (EFA) with oblemin rotation and two factors was conducted to understand the underlying structure of the 17 items. Most items loaded onto the first factor, with items 103, 104, 105, and 106 from the Chronic Work Discrimination and Harassment scale having the highest loadings on the second factor (0.849, 0.824, 0.498, and 0.793, respectively). These four items all focused on assessing the use of bigoted slurs or jokes use by both supervisors and colleagues.
 
@@ -298,6 +298,8 @@ Lewis, J.A., Neville, H.A., 2015. Construction and initial validation of the Gen
 McNeilly, M.D., Anderson, N.B., Armstead, C.A., Clark, R., Corbett, M., Robinson, E.L., Pieper, C.F. & Lepisto, E.M. (1996). “The perceived racism scale: A multidimensional assessment of the experience of white racism among African Americans.” *Ethnicity and Disease*. 6, 154-166.
 
 Scheim, A. I., & Bauer, G. R. (2019). The Intersectional Discrimination Index: Development and validation of measures of self-reported enacted and anticipated discrimination for intercategorical analysis. *Social Science & Medicine*, *226*, 225-235.
+
+Shaw, J., Bailey, C., Danylkiv, A., Kashyap, M., Chávez, N. R., & Voight, A. (2023). The work experiences and needs of lone community psychologists: Exploring diversity of settings and identities. *Journal of Community Psychology*, *51*(5), 1917-1934. [**https://doi.org/10.1002/jcop.22979**](https://doi.org/10.1002/jcop.22979)
 
 R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL <https://www.R-project.org/>.
 
