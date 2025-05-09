@@ -5,40 +5,27 @@ editor: visual
 
 ## A Text Analysis of Sexual Assault Reform Laws
 
-#### Sexual Assault Kit (SAK) Law Reform
+#### History of Sexual Assault Kit Testing
 
--   Backlogs of untested rape kits led to national concern over criminal justice failure.
+Over the past two decades, the United States has uncovered and worked to address a significant backlog of untested sexual assault kits (SAKs)—forensic evidence collected from survivors of sexual violence. This backlog came to public attention in 2009 when over 11,000 untested kits were discovered in a Detroit police warehouse. Investigations in other cities revealed similar problems, with hundreds of thousands of kits across the country either unsubmitted to labs or untested, sometimes for decades. Causes included chronic underfunding, lack of clear procedures, and systemic disbelief in survivors, especially those from marginalized communities.
 
--   Advocacy groups (e.g., End the Backlog) called for comprehensive reform.
+In response, federal and state lawmakers passed reforms. The Debbie Smith Act (2004) provided millions in funding to test backlogged DNA evidence, followed by the SAFER Act (2013), which mandated that 75% of those funds go specifically to SAK testing. The Sexual Assault Kit Initiative (SAKI), launched in 2015, further supported jurisdictions in auditing, testing, and investigating old kits. By the early 2020s, many states had implemented timelines for evidence submission and mandated survivor notification, with some even clearing their entire backlog. Despite this progress, disparities persist across jurisdictions, and not all states have comprehensive laws to prevent future backlogs.
 
--   "6 Pillars of Reform" Inventory, testing backlogged, testing new, tracking, survivor notification, funding
+#### Theory of Legal Language 
 
--   20 states have complete reform, 30 have some reform, 1 has no reform.
+Legal reform efforts have increasingly incorporated victim-centered and trauma-informed practices. Still, the language of these laws varies significantly, and that variation may influence both implementation and outcomes, including sexual assault reporting and arrest rates. Analyzing this language through **post-structural feminism** reveals how legal texts construct power dynamics. For example, statutes that label individuals as “survivors” rather than “victims” emphasize resilience and agency, while those that include trauma-informed terms acknowledge the psychological impact of assault and validate survivors’ experiences. In contrast, laws that treat SAKs purely as evidence, without addressing survivor rights or institutional accountability, risk reinforcing past harm.
 
-#### Language in Legal Text
+The Theory of Social Intervention complements this analysis by viewing laws as deliberate responses to social problems. Each state’s law encodes a theory of change—who is responsible, what the problem is, and how it should be fixed. Mandates like “shall submit all kits within 7 days” create accountability structures that can shift institutional behavior. The inclusion or exclusion of specific themes—such as mandatory testing, survivor notification, or trauma-informed care—signals whether a law prioritizes procedural efficiency, survivor justice, or both.
 
--   Laws are not value-neutral: wording reflects cultural, political, and ideological positions.
+Coding these laws for thematic content allows us to examine whether linguistic choices predict measurable differences in system outcomes, such as higher report or arrest rates. States that include survivor-focused language and strict mandates may better support victim engagement and consistent kit processing. In contrast, vague or minimalist statutes may permit ongoing discretion and delay.
 
--   Survivor-centered vs system-centered language may signal how seriously states commit to comprehensive reform.
+In sum, examining the history and discourse of SAK laws reveals not only how reform has unfolded, but also how language plays a pivotal role in shaping justice. Legal texts are not neutral—they reflect societal values and have real consequences for survivors, institutions, and outcomes.
 
--   Language may influence future legislative momentum.
+### Analysis 
 
--   Earliest reform was in 2010 (IL), with 17 states having reform by 2016, and 50 states having some reform by 2024
+```{r Set up, echo=FALSE}
 
-## **Does the language used in a state’s initial SAK submission reform law predict whether the state ultimately implements all 6 pillars of reform?**
+```
 
-#### Why it matters?
-
--   Links legal rhetoric to policy implementation and outcomes.
-
--   Fills a gap in understanding how laws evolve and scale over time.
-
--   Offers insight for advocacy, policy development, and trauma-informed legislation.
-
--   Can inform future legislative drafting by identifying which framing supports comprehensive reform.
-
-<<<<<<< HEAD
-#### Using ChatGPT to Qualitativly analyze
-=======
-#### Using ChatGPT to Qualitativly analyze 
->>>>>>> refs/remotes/origin/main
+```{}
+```
