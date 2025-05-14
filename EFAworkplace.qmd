@@ -1,5 +1,6 @@
 ---
 title: "Intersectional Work Discrimination Scale Development"
+author: "Mandi Urbizo-Haukjaer"
 date: "10/20/2021"
 ---
 
