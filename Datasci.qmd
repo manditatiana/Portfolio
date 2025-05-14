@@ -291,7 +291,8 @@ ggplot(perm_dir_terms, aes(x = reorder(term, n), y = n, fill = sentiment)) +
 
 ## References
 - Bernard, H. R., Wutich, A., & Ryan, G. W. (2017). *Analyzing Qualitative Data: Systematic Approaches* (2nd ed.). SAGE Publications.
-- Silge, J., & Robinson, D. (2017). *Text Mining with R: A Tidy Approach*. O'Reilly Media. how specific language contributes to the overall themes, I generated additional visualizations. These charts show the most commonly used terms for each sentiment category and help clarify which words most frequently contributed to theme classification. This breakdown supports both transparency and interpretability of the qualitative coding process.
+- Silge, J., & Robinson, D. (2017). *Text Mining with R: A Tidy Approach*. O'Reilly Media.
+- End the Backlog. (n.d.). *The Six Pillars of Reform*. Joyful Heart Foundation. Retrieved from [https://www.endthebacklog.org/](https://www.endthebacklog.org/), H. R., Wutich, A., & Ryan, G. W. (2017). *Analyzing Qualitative Data: Systematic Approaches* (2nd ed.). SAGE Publications.
 
 
 

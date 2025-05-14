@@ -187,7 +187,7 @@
     "href": "Datasci.html#references",
     "title": "Using R and ChatGPT for Qualitative Coding of SAK Laws",
     "section": "References",
-    "text": "References\n\nBernard, H. R., Wutich, A., & Ryan, G. W. (2017). Analyzing Qualitative Data: Systematic Approaches (2nd ed.). SAGE Publications.\nSilge, J., & Robinson, D. (2017). Text Mining with R: A Tidy Approach. O’Reilly Media. how specific language contributes to the overall themes, I generated additional visualizations. These charts show the most commonly used terms for each sentiment category and help clarify which words most frequently contributed to theme classification. This breakdown supports both transparency and interpretability of the qualitative coding process.",
+    "text": "References\n\nBernard, H. R., Wutich, A., & Ryan, G. W. (2017). Analyzing Qualitative Data: Systematic Approaches (2nd ed.). SAGE Publications.\nSilge, J., & Robinson, D. (2017). Text Mining with R: A Tidy Approach. O’Reilly Media.\nEnd the Backlog. (n.d.). The Six Pillars of Reform. Joyful Heart Foundation. Retrieved from https://www.endthebacklog.org/, H. R., Wutich, A., & Ryan, G. W. (2017). Analyzing Qualitative Data: Systematic Approaches (2nd ed.). SAGE Publications.",
     "crumbs": [
       "Projects",
       "SAK Law Reform Text Anyalysis"
