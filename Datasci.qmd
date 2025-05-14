@@ -1,31 +1,297 @@
 ---
-title: "How States Write About Survivors:"
-editor: visual
+title: "Using R and ChatGPT for Qualitative Coding of SAK Laws"
+author: "Mandi Urbizo-Haukjaer"
+date: "2025-05-13"
+format: html
 ---
 
-## A Text Analysis of Sexual Assault Reform Laws
 
-#### History of Sexual Assault Kit Testing
+### Background: The History and Discourse of SAK Law Reform
 
-Over the past two decades, the United States has uncovered and worked to address a significant backlog of untested sexual assault kits (SAKs)—forensic evidence collected from survivors of sexual violence. This backlog came to public attention in 2009 when over 11,000 untested kits were discovered in a Detroit police warehouse. Investigations in other cities revealed similar problems, with hundreds of thousands of kits across the country either unsubmitted to labs or untested, sometimes for decades. Causes included chronic underfunding, lack of clear procedures, and systemic disbelief in survivors, especially those from marginalized communities.
+Over the past two decades, the United States has uncovered a disturbing backlog of untested sexual assault kits (SAKs)—forensic evidence collected from survivors of sexual violence. This problem gained national attention in 2009 with the discovery of 11,000 untested kits in a Detroit warehouse, spurring investigations across the country. Root causes included underfunding, a lack of procedural clarity, and systemic disbelief in survivors, particularly from marginalized communities.
 
-In response, federal and state lawmakers passed reforms. The Debbie Smith Act (2004) provided millions in funding to test backlogged DNA evidence, followed by the SAFER Act (2013), which mandated that 75% of those funds go specifically to SAK testing. The Sexual Assault Kit Initiative (SAKI), launched in 2015, further supported jurisdictions in auditing, testing, and investigating old kits. By the early 2020s, many states had implemented timelines for evidence submission and mandated survivor notification, with some even clearing their entire backlog. Despite this progress, disparities persist across jurisdictions, and not all states have comprehensive laws to prevent future backlogs.
+In response, federal and state policymakers passed several reforms:  
+- **The Debbie Smith Act (2004)** funded DNA evidence testing.  
+- **The SAFER Act (2013)** directed 75% of these funds toward SAKs.  
+- **The Sexual Assault Kit Initiative (SAKI, 2015)** supported jurisdictions in addressing their backlogs.  
+Many states followed by enacting laws that mandated testing timelines and survivor notifications.
 
-#### Theory of Legal Language 
+While this progress is promising, not all states have comprehensive laws. Critically, the way these laws are written may impact how they are implemented and whether they achieve meaningful reform.
 
-Legal reform efforts have increasingly incorporated victim-centered and trauma-informed practices. Still, the language of these laws varies significantly, and that variation may influence both implementation and outcomes, including sexual assault reporting and arrest rates. Analyzing this language through **post-structural feminism** reveals how legal texts construct power dynamics. For example, statutes that label individuals as “survivors” rather than “victims” emphasize resilience and agency, while those that include trauma-informed terms acknowledge the psychological impact of assault and validate survivors’ experiences. In contrast, laws that treat SAKs purely as evidence, without addressing survivor rights or institutional accountability, risk reinforcing past harm.
+## Content Analysis in R Using ChatGPT and tidytext
 
-The Theory of Social Intervention complements this analysis by viewing laws as deliberate responses to social problems. Each state’s law encodes a theory of change—who is responsible, what the problem is, and how it should be fixed. Mandates like “shall submit all kits within 7 days” create accountability structures that can shift institutional behavior. The inclusion or exclusion of specific themes—such as mandatory testing, survivor notification, or trauma-informed care—signals whether a law prioritizes procedural efficiency, survivor justice, or both.
+To explore whether the language used in state sexual assault kit (SAK) submission laws affects reform outcomes, I conducted a qualitative content analysis using R and ChatGPT. I followed the 7-step content analysis framework by Bernard, Wutich, and Ryan (2017), which guided the full workflow from formulating a research question to applying codes, analyzing results, and interpreting their meaning.
 
-Coding these laws for thematic content allows us to examine whether linguistic choices predict measurable differences in system outcomes, such as higher report or arrest rates. States that include survivor-focused language and strict mandates may better support victim engagement and consistent kit processing. In contrast, vague or minimalist statutes may permit ongoing discretion and delay.
 
-In sum, examining the history and discourse of SAK laws reveals not only how reform has unfolded, but also how language plays a pivotal role in shaping justice. Legal texts are not neutral—they reflect societal values and have real consequences for survivors, institutions, and outcomes.
+### Step 1: Formulate a Research Question
 
-### Analysis 
+Do the linguistic themes found in SAK laws predict how many of the 6 End the Backlog pillars a state has achieved?
 
-```{r Set up, echo=FALSE}
+### Step 2: Select a Set of Texts
+
+I compiled a dataset (`law_df`) that included:
+
+- The State (State)
+- The number of End the Backlog pillars achieved by each state (Pillars_Achieved)
+- The year the law was passed (Law_Year)
+- The name of the law (Law_Name)
+- The text of the law (Law_Text)
+
+### Step 3: Create a Set of Codes (Themes)
+
+Based on post-structural feminist theory and the Theory of Social Intervention, I created three thematic codes:
+
+- **Survivor vs. Victim Language**: This theme examines how the law constructs individuals who have experienced sexual violence. While “victim” aligns with legal tradition and emphasizes harm, “survivor” foregrounds agency and resilience. Post-structural feminist theory posits that this linguistic distinction shapes institutional and societal responses by framing whose voice is centered.
+
+- **Trauma-Informed Language**: This theme assesses whether a statute acknowledges the emotional and psychological impact of sexual violence. It includes terms such as “trauma-informed,” “victim-centered,” and references to sensitive procedures. Laws that use this language aim to minimize retraumatization and reflect care-based interventions aligned with social intervention theory.
+
+- **Permissive vs. Directive Language**: This theme evaluates whether laws mandate action or offer discretion. For example, “shall submit” reflects directive framing, signaling accountability and uniformity, whereas “may submit” permits variability. Directive language aligns with state efforts to enforce procedural integrity, a key component of successful policy implementation.
+
+With ChatGPT’s assistance, I created a custom sentiment lexicon used for tidytext analysis. The lexicon was iteratively expanded and cleaned based on law-specific language and advocacy literature.
+
+### Step 4: Pretest the Variables
+
+Using tidytext and ChatGPT, I coded the first 10 states, compared outputs, and refined the lexicon. I removed problematic terms like “victim” and “shall,” and simplified trauma-informed to a binary presence/absence indicator.
+
+### Step 5: Apply the Codes to All Texts
+
+To begin the analysis, I loaded the necessary R packages and set the working directory to where my datasets are stored.
+
+```{r setup, warning=FALSE, message=FALSE}
+library(tidyverse)      # Tools for data wrangling and visualization
+library(tidytext)       # Tools for working with text data
+library(readxl)         # For reading Excel files
+library(textclean)      # For cleaning messy text
+library(textshape)      # For reshaping and organizing text
+library(ggplot2)        # For making graphs
+library(writexl)        # For writing Excel files
+library(broom)          # For tidying model output
+```
+
+Next, I imported the laws and sentiment lexicon Excel files and cleaned the law text. This included removing special characters, converting text to lowercase, and tokenizing it into individual words.
+
+```{r load_and_clean}
+# 5.1. Load the two datasets: laws and the custom sentiment lexicon
+laws <- read_excel("SAK Sub Laws.xlsx")
+lexicon <- read_excel("custom_sentiment_lexicon_2.xlsx")
+
+# 5.2. Clean and standardize the text of each law
+laws_clean <- laws %>%
+  mutate(
+    Law_Text = replace_non_ascii(Law_Text),           # Remove strange/non-standard characters
+    Law_Text = tolower(Law_Text),                     # Make all text lowercase
+    Law_Text = str_replace_all(Law_Text, "[^a-z\\s]", " "),  # Remove punctuation and numbers
+    Law_Text = str_squish(Law_Text)                   # Remove extra spaces between words
+  )
+
+# 5.3. Break each law into individual words (tokens)
+laws_tokenized <- laws_clean %>%
+  unnest_tokens(output = term, input = Law_Text, token = "words")
+```
+
+I then matched the tokenized words from each law with terms in the sentiment lexicon to assign each word a theme-based sentiment label.
+
+```{r sentiment_analysis}
+# 5.4. Match each word from the laws to a sentiment label in the lexicon
+coded_laws <- laws_tokenized %>%
+  inner_join(lexicon, by = c("term" = "word")) %>%    # Only keep words that are in the lexicon
+  select(State, Pillars_Achieved, Law_Name, Law_Year, term, sentiment)
+
+# 5.5. Count how many times each sentiment appears across all laws
+sentiment_counts <- coded_laws %>%
+  count(sentiment, sort = TRUE)
+```
+
+This plot shows the frequency of each sentiment category found across all state laws, giving a sense of which themes are most prevalent.
+
+```{r plot_sentiment_counts}
+# 5.6. Visualize the frequency of each sentiment category in a bar chart
+ggplot(sentiment_counts, aes(x = reorder(sentiment, n), y = n, fill = sentiment)) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  labs(title = "Frequency of Sentiment Categories in SAK Laws",
+       x = "Sentiment Category",
+       y = "Count of Terms")
+```
+
+I then created binary indicators to represent whether each law used survivor, trauma-informed, or directive language. These were coded as 1 if any words from the corresponding sentiment category were present in the law and 0 if not. This presence/absence approach was used to avoid over-weighting laws with longer text or redundant phrasing and to simplify interpretation in the regression models. For example, a single mention of trauma-informed principles was sufficient to classify a law as trauma-informed. These variables were then merged with the outcome data on pillar achievement.
+
+
+| Variable                  | Type   | Meaning                       |
+| ------------------------- | ------ | ----------------------------- |
+| Survivor\_vs\_Victim      | binary | 1 = survivor language present |
+| TraumaInformed            | binary | 1 = trauma-informed language  |
+| Directive\_vs\_Permissive | binary | 1 = directive language        |
+
+```{r create_theme_indicators}
+# 5.7. Count the number of terms in each sentiment category per state and create binary (1/0) indicators for each theme per state
+state_summary <- coded_laws %>%
+  count(State, sentiment) %>%
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>%
+  mutate(
+    Survivor_vs_Victim = if_else(Survivor > 0, 1, 0),
+    TraumaInformed = if_else(`Trauma-Informed` > 0, 1, 0),
+    Directive_vs_Permissive = case_when(
+      Directive > 0 ~ 1,
+      Permissive > 0 ~ 0,
+      TRUE ~ NA_real_
+    )
+  )
+
+# 5.8. Merge theme data with outcomes (Pillars Achieved) for analysis
+model_data <- laws_clean %>%
+  select(State, Pillars_Achieved) %>%
+  left_join(state_summary, by = "State")
+```
+
+This step flags any state that was missing theme coding, which was used as a control variable in the regression models.
+
+```{r prepare_missingness}
+# Create a variable indicating if theme data is missing for a state
+model_data_prepped <- model_data %>%
+  mutate(
+    MissingThemes = if_else(
+      is.na(Survivor_vs_Victim) | is.na(TraumaInformed) | is.na(Directive_vs_Permissive),
+      1, 0
+    )
+  )
+```
+
+### Step 6: Create a Case-by-Case Matrix and Step 7: Analyze It
+
+I ran two regression models—one to test the impact of theme presence on reform outcomes, and another to assess whether having a law at all mattered.
+
+```{r run_models}
+# Test the effect of each theme on Pillars Achieved
+theme_model <- lm(
+  Pillars_Achieved ~ Survivor_vs_Victim + TraumaInformed + Directive_vs_Permissive,
+  data = model_data_prepped
+)
+summary(theme_model)
+
+# Test whether missing theme data is related to Pillars Achieved
+missingness_only_model <- lm(Pillars_Achieved ~ MissingThemes, data = model_data_prepped)
+summary(missingness_only_model)
+```
+
+The chart below visualizes the estimated effect of each language theme on the number of pillars a state has achieved. Error bars represent 95% confidence intervals.
+
+```{r plot_model_results}
+# Plot estimated effect of each theme on Pillars Achieved
+tidy(theme_model, conf.int = TRUE) %>%                      # Get coefficients with confidence intervals
+  filter(term != "(Intercept)") %>%                         # Exclude intercept
+  ggplot(aes(x = reorder(term, estimate), y = estimate)) +  # Plot coefficients
+  geom_col(fill = "steelblue") +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 0.2) +
+  coord_flip() +
+  labs(
+    title = "Effect of Legal Language Themes and Missingness on Pillars Achieved",
+    x = "Predictor",
+    y = "Estimated Effect (Linear Coefficient)"
+  )
 
 ```
 
-```{}
+## Results Summary
+
+### Language Themes Alone Did Not Predict Reform
+In the first regression model, I tested whether the presence of survivor-oriented, trauma-informed, or directive language in a state's SAK law predicted how many of the six End the Backlog pillars the state had achieved. None of the individual themes reached statistical significance at the p < .05 level. However, the direction and magnitude of the coefficients suggest meaningful patterns worth further exploration:
+
+- **Directive Language** was associated with a positive increase of approximately 0.74 additional pillars. This suggests that laws with more directive mandates may support stronger implementation, potentially by reducing local discretion and encouraging accountability.
+- **Trauma-Informed Language** had a small positive association (+0.23), which aligns with the idea that laws acknowledging survivors' psychological needs may contribute to more comprehensive reform. However, the estimate was not statistically significant.
+- **Survivor-Oriented Language** was negatively associated with pillar achievement (–0.42), a counterintuitive finding. One explanation could be that such language is more common in symbolic laws passed by states with limited resources or infrastructure for implementation.
+
+### The Impact of Not Having a Law at All
+In the second model, I examined whether simply having a SAK submission law (regardless of its language) made a difference in pillar adoption. The results were much more robust:
+
+- States with no SAK submission law as of January 2025 had **2.84 fewer pillars achieved** on average compared to states with a law.
+- This finding was highly statistically significant (p < .001) and accounted for **over 55% of the variance** in state-level reform progress.
+
+This result underscores the critical role of legislative action itself, even beyond the specifics of language used.
+
+### Key Insights
+- Passing a law is a necessary step for advancing comprehensive reform.
+- The specific wording of laws may still play a role, particularly in the use of directive and trauma-informed language, but more nuanced research is needed.
+- Legal language likely interacts with enforcement mechanisms, funding, advocacy, and training efforts—suggesting that language is just one part of a larger ecosystem required to prevent backlogs and support survivors effectively.
+
+## Additional Visualizations by Theme
+
+Below are supplementary bar charts that display the most frequently occurring terms within each of the three major themes (Survivor vs. Victim, Trauma-Informed, and Permissive vs. Directive). These plots offer a more granular look at how often specific language is used across state laws and provide further context for interpreting the patterns identified in the sentiment analysis.
+
+- The specific wording of laws may still play a role, particularly in the use of directive and trauma-informed language, but more nuanced research is needed.
+- Legal language likely interacts with enforcement mechanisms, funding, advocacy, and training efforts—suggesting that language is just one part of a larger ecosystem required to prevent backlogs and support survivors effectively.
+
+### Survivor vs Victim Language
+
+```{r Visiualize Themes-Survivor}
+# Filter to only keep words labeled as Survivor or Victim language
+survivor_victim_terms <- coded_laws %>%
+  filter(sentiment %in% c("Survivor", "Victim")) %>%
+  count(sentiment, term, sort = TRUE)
+
+# View a table of these terms and their counts
+print(survivor_victim_terms)
+
+# Create a bar chart comparing the frequency of Survivor vs. Victim terms
+ggplot(survivor_victim_terms, aes(x = reorder(term, n), y = n, fill = sentiment)) +
+  geom_col(show.legend = TRUE, position = "dodge") +
+  coord_flip() +
+  labs(
+    title = "Survivor vs. Victim Language in SAK Laws",
+    x = "Term",
+    y = "Frequency",
+    fill = "Sentiment Category"
+  )
 ```
+
+### Trauma-Informed Language
+
+```{r Visualize Themes - Trauma-Informed}
+# Keep only terms labeled as Trauma-Informed
+trauma_terms <- coded_laws %>%
+  filter(sentiment %in% c("Trauma-Informed")) %>%
+  count(sentiment, term, sort = TRUE)
+
+# View the terms and their counts
+print(trauma_terms)
+
+# Bar chart of Trauma-Informed terms
+ggplot(trauma_terms, aes(x = reorder(term, n), y = n, fill = sentiment)) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  labs(
+    title = "Trauma-Informed Language in SAK Laws",
+    x = "Term",
+    y = "Frequency"
+  )
+```
+
+### Permissive vs Directive Language
+
+```{r Visualize Themes - Permissive vs Directive}
+# Filter to include only Permissive and Directive language
+perm_dir_terms <- coded_laws %>%
+  filter(sentiment %in% c("Permissive", "Directive")) %>%
+  count(sentiment, term, sort = TRUE)
+
+# View table of terms
+print(perm_dir_terms)
+
+# Bar chart of Permissive vs. Directive language terms
+ggplot(perm_dir_terms, aes(x = reorder(term, n), y = n, fill = sentiment)) +
+  geom_col(show.legend = TRUE, position = "dodge") +
+  coord_flip() +
+  labs(
+    title = "Permissive vs. Directive Language in SAK Laws",
+    x = "Term",
+    y = "Frequency",
+    fill = "Sentiment Category"
+  )
+```
+
+## References
+- Bernard, H. R., Wutich, A., & Ryan, G. W. (2017). *Analyzing Qualitative Data: Systematic Approaches* (2nd ed.). SAGE Publications.
+- Silge, J., & Robinson, D. (2017). *Text Mining with R: A Tidy Approach*. O'Reilly Media. how specific language contributes to the overall themes, I generated additional visualizations. These charts show the most commonly used terms for each sentiment category and help clarify which words most frequently contributed to theme classification. This breakdown supports both transparency and interpretability of the qualitative coding process.
+
+
+

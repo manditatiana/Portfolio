@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Mandi Urbizo-Haukjaer">
+<meta name="dcterms.date" content="2025-05-13">
 
-<title>How States Write About Survivors: – MUH Portfolio</title>
+<title>Using R and ChatGPT for Qualitative Coding of SAK Laws – MUH Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -148,10 +185,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-text-analysis-of-sexual-assault-reform-laws" id="toc-a-text-analysis-of-sexual-assault-reform-laws" class="nav-link active" data-scroll-target="#a-text-analysis-of-sexual-assault-reform-laws">A Text Analysis of Sexual Assault Reform Laws</a>
+  <li><a href="#background-the-history-and-discourse-of-sak-law-reform" id="toc-background-the-history-and-discourse-of-sak-law-reform" class="nav-link active" data-scroll-target="#background-the-history-and-discourse-of-sak-law-reform">Background: The History and Discourse of SAK Law Reform</a></li>
+  <li><a href="#content-analysis-in-r-using-chatgpt-and-tidytext" id="toc-content-analysis-in-r-using-chatgpt-and-tidytext" class="nav-link" data-scroll-target="#content-analysis-in-r-using-chatgpt-and-tidytext">Content Analysis in R Using ChatGPT and tidytext</a>
   <ul class="collapse">
-  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
+  <li><a href="#step-1-formulate-a-research-question" id="toc-step-1-formulate-a-research-question" class="nav-link" data-scroll-target="#step-1-formulate-a-research-question">Step 1: Formulate a Research Question</a></li>
+  <li><a href="#step-2-select-a-set-of-texts" id="toc-step-2-select-a-set-of-texts" class="nav-link" data-scroll-target="#step-2-select-a-set-of-texts">Step 2: Select a Set of Texts</a></li>
+  <li><a href="#step-3-create-a-set-of-codes-themes" id="toc-step-3-create-a-set-of-codes-themes" class="nav-link" data-scroll-target="#step-3-create-a-set-of-codes-themes">Step 3: Create a Set of Codes (Themes)</a></li>
+  <li><a href="#step-4-pretest-the-variables" id="toc-step-4-pretest-the-variables" class="nav-link" data-scroll-target="#step-4-pretest-the-variables">Step 4: Pretest the Variables</a></li>
+  <li><a href="#step-5-apply-the-codes-to-all-texts" id="toc-step-5-apply-the-codes-to-all-texts" class="nav-link" data-scroll-target="#step-5-apply-the-codes-to-all-texts">Step 5: Apply the Codes to All Texts</a></li>
+  <li><a href="#step-6-create-a-case-by-case-matrix-and-step-7-analyze-it" id="toc-step-6-create-a-case-by-case-matrix-and-step-7-analyze-it" class="nav-link" data-scroll-target="#step-6-create-a-case-by-case-matrix-and-step-7-analyze-it">Step 6: Create a Case-by-Case Matrix and Step 7: Analyze It</a></li>
   </ul></li>
+  <li><a href="#results-summary" id="toc-results-summary" class="nav-link" data-scroll-target="#results-summary">Results Summary</a>
+  <ul class="collapse">
+  <li><a href="#language-themes-alone-did-not-predict-reform" id="toc-language-themes-alone-did-not-predict-reform" class="nav-link" data-scroll-target="#language-themes-alone-did-not-predict-reform">Language Themes Alone Did Not Predict Reform</a></li>
+  <li><a href="#the-impact-of-not-having-a-law-at-all" id="toc-the-impact-of-not-having-a-law-at-all" class="nav-link" data-scroll-target="#the-impact-of-not-having-a-law-at-all">The Impact of Not Having a Law at All</a></li>
+  <li><a href="#key-insights" id="toc-key-insights" class="nav-link" data-scroll-target="#key-insights">Key Insights</a></li>
+  </ul></li>
+  <li><a href="#additional-visualizations-by-theme" id="toc-additional-visualizations-by-theme" class="nav-link" data-scroll-target="#additional-visualizations-by-theme">Additional Visualizations by Theme</a>
+  <ul class="collapse">
+  <li><a href="#survivor-vs-victim-language" id="toc-survivor-vs-victim-language" class="nav-link" data-scroll-target="#survivor-vs-victim-language">Survivor vs Victim Language</a></li>
+  <li><a href="#trauma-informed-language" id="toc-trauma-informed-language" class="nav-link" data-scroll-target="#trauma-informed-language">Trauma-Informed Language</a></li>
+  <li><a href="#permissive-vs-directive-language" id="toc-permissive-vs-directive-language" class="nav-link" data-scroll-target="#permissive-vs-directive-language">Permissive vs Directive Language</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/manditatiana/Portfolio/edit/main/Datasci.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/manditatiana/Portfolio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -160,14 +216,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">How States Write About Survivors:</h1>
+<h1 class="title">Using R and ChatGPT for Qualitative Coding of SAK Laws</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mandi Urbizo-Haukjaer </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 13, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -177,26 +245,430 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="a-text-analysis-of-sexual-assault-reform-laws" class="level2">
-<h2 class="anchored" data-anchor-id="a-text-analysis-of-sexual-assault-reform-laws">A Text Analysis of Sexual Assault Reform Laws</h2>
-<section id="history-of-sexual-assault-kit-testing" class="level4">
-<h4 class="anchored" data-anchor-id="history-of-sexual-assault-kit-testing">History of Sexual Assault Kit Testing</h4>
-<p>Over the past two decades, the United States has uncovered and worked to address a significant backlog of untested sexual assault kits (SAKs)—forensic evidence collected from survivors of sexual violence. This backlog came to public attention in 2009 when over 11,000 untested kits were discovered in a Detroit police warehouse. Investigations in other cities revealed similar problems, with hundreds of thousands of kits across the country either unsubmitted to labs or untested, sometimes for decades. Causes included chronic underfunding, lack of clear procedures, and systemic disbelief in survivors, especially those from marginalized communities.</p>
-<p>In response, federal and state lawmakers passed reforms. The Debbie Smith Act (2004) provided millions in funding to test backlogged DNA evidence, followed by the SAFER Act (2013), which mandated that 75% of those funds go specifically to SAK testing. The Sexual Assault Kit Initiative (SAKI), launched in 2015, further supported jurisdictions in auditing, testing, and investigating old kits. By the early 2020s, many states had implemented timelines for evidence submission and mandated survivor notification, with some even clearing their entire backlog. Despite this progress, disparities persist across jurisdictions, and not all states have comprehensive laws to prevent future backlogs.</p>
+<section id="background-the-history-and-discourse-of-sak-law-reform" class="level3">
+<h3 class="anchored" data-anchor-id="background-the-history-and-discourse-of-sak-law-reform">Background: The History and Discourse of SAK Law Reform</h3>
+<p>Over the past two decades, the United States has uncovered a disturbing backlog of untested sexual assault kits (SAKs)—forensic evidence collected from survivors of sexual violence. This problem gained national attention in 2009 with the discovery of 11,000 untested kits in a Detroit warehouse, spurring investigations across the country. Root causes included underfunding, a lack of procedural clarity, and systemic disbelief in survivors, particularly from marginalized communities.</p>
+<p>In response, federal and state policymakers passed several reforms:<br>
+- <strong>The Debbie Smith Act (2004)</strong> funded DNA evidence testing.<br>
+- <strong>The SAFER Act (2013)</strong> directed 75% of these funds toward SAKs.<br>
+- <strong>The Sexual Assault Kit Initiative (SAKI, 2015)</strong> supported jurisdictions in addressing their backlogs.<br>
+Many states followed by enacting laws that mandated testing timelines and survivor notifications.</p>
+<p>While this progress is promising, not all states have comprehensive laws. Critically, the way these laws are written may impact how they are implemented and whether they achieve meaningful reform.</p>
 </section>
-<section id="theory-of-legal-language" class="level4">
-<h4 class="anchored" data-anchor-id="theory-of-legal-language">Theory of Legal Language</h4>
-<p>Legal reform efforts have increasingly incorporated victim-centered and trauma-informed practices. Still, the language of these laws varies significantly, and that variation may influence both implementation and outcomes, including sexual assault reporting and arrest rates. Analyzing this language through <strong>post-structural feminism</strong> reveals how legal texts construct power dynamics. For example, statutes that label individuals as “survivors” rather than “victims” emphasize resilience and agency, while those that include trauma-informed terms acknowledge the psychological impact of assault and validate survivors’ experiences. In contrast, laws that treat SAKs purely as evidence, without addressing survivor rights or institutional accountability, risk reinforcing past harm.</p>
-<p>The Theory of Social Intervention complements this analysis by viewing laws as deliberate responses to social problems. Each state’s law encodes a theory of change—who is responsible, what the problem is, and how it should be fixed. Mandates like “shall submit all kits within 7 days” create accountability structures that can shift institutional behavior. The inclusion or exclusion of specific themes—such as mandatory testing, survivor notification, or trauma-informed care—signals whether a law prioritizes procedural efficiency, survivor justice, or both.</p>
-<p>Coding these laws for thematic content allows us to examine whether linguistic choices predict measurable differences in system outcomes, such as higher report or arrest rates. States that include survivor-focused language and strict mandates may better support victim engagement and consistent kit processing. In contrast, vague or minimalist statutes may permit ongoing discretion and delay.</p>
-<p>In sum, examining the history and discourse of SAK laws reveals not only how reform has unfolded, but also how language plays a pivotal role in shaping justice. Legal texts are not neutral—they reflect societal values and have real consequences for survivors, institutions, and outcomes.</p>
+<section id="content-analysis-in-r-using-chatgpt-and-tidytext" class="level2">
+<h2 class="anchored" data-anchor-id="content-analysis-in-r-using-chatgpt-and-tidytext">Content Analysis in R Using ChatGPT and tidytext</h2>
+<p>To explore whether the language used in state sexual assault kit (SAK) submission laws affects reform outcomes, I conducted a qualitative content analysis using R and ChatGPT. I followed the 7-step content analysis framework by Bernard, Wutich, and Ryan (2017), which guided the full workflow from formulating a research question to applying codes, analyzing results, and interpreting their meaning.</p>
+<section id="step-1-formulate-a-research-question" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-formulate-a-research-question">Step 1: Formulate a Research Question</h3>
+<p>Do the linguistic themes found in SAK laws predict how many of the 6 End the Backlog pillars a state has achieved?</p>
 </section>
-<section id="analysis" class="level3">
-<h3 class="anchored" data-anchor-id="analysis">Analysis</h3>
-<pre><code></code></pre>
+<section id="step-2-select-a-set-of-texts" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-select-a-set-of-texts">Step 2: Select a Set of Texts</h3>
+<p>I compiled a dataset (<code>law_df</code>) that included:</p>
+<ul>
+<li>The State (State)</li>
+<li>The number of End the Backlog pillars achieved by each state (Pillars_Achieved)</li>
+<li>The year the law was passed (Law_Year)</li>
+<li>The name of the law (Law_Name)</li>
+<li>The text of the law (Law_Text)</li>
+</ul>
+</section>
+<section id="step-3-create-a-set-of-codes-themes" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-create-a-set-of-codes-themes">Step 3: Create a Set of Codes (Themes)</h3>
+<p>Based on post-structural feminist theory and the Theory of Social Intervention, I created three thematic codes:</p>
+<ul>
+<li><p><strong>Survivor vs.&nbsp;Victim Language</strong>: This theme examines how the law constructs individuals who have experienced sexual violence. While “victim” aligns with legal tradition and emphasizes harm, “survivor” foregrounds agency and resilience. Post-structural feminist theory posits that this linguistic distinction shapes institutional and societal responses by framing whose voice is centered.</p></li>
+<li><p><strong>Trauma-Informed Language</strong>: This theme assesses whether a statute acknowledges the emotional and psychological impact of sexual violence. It includes terms such as “trauma-informed,” “victim-centered,” and references to sensitive procedures. Laws that use this language aim to minimize retraumatization and reflect care-based interventions aligned with social intervention theory.</p></li>
+<li><p><strong>Permissive vs.&nbsp;Directive Language</strong>: This theme evaluates whether laws mandate action or offer discretion. For example, “shall submit” reflects directive framing, signaling accountability and uniformity, whereas “may submit” permits variability. Directive language aligns with state efforts to enforce procedural integrity, a key component of successful policy implementation.</p></li>
+</ul>
+<p>With ChatGPT’s assistance, I created a custom sentiment lexicon used for tidytext analysis. The lexicon was iteratively expanded and cleaned based on law-specific language and advocacy literature.</p>
+</section>
+<section id="step-4-pretest-the-variables" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-pretest-the-variables">Step 4: Pretest the Variables</h3>
+<p>Using tidytext and ChatGPT, I coded the first 10 states, compared outputs, and refined the lexicon. I removed problematic terms like “victim” and “shall,” and simplified trauma-informed to a binary presence/absence indicator.</p>
+</section>
+<section id="step-5-apply-the-codes-to-all-texts" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-apply-the-codes-to-all-texts">Step 5: Apply the Codes to All Texts</h3>
+<p>To begin the analysis, I loaded the necessary R packages and set the working directory to where my datasets are stored.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)      <span class="co"># Tools for data wrangling and visualization</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)       <span class="co"># Tools for working with text data</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)         <span class="co"># For reading Excel files</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(textclean)      <span class="co"># For cleaning messy text</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(textshape)      <span class="co"># For reshaping and organizing text</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)        <span class="co"># For making graphs</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)        <span class="co"># For writing Excel files</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)          <span class="co"># For tidying model output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, I imported the laws and sentiment lexicon Excel files and cleaned the law text. This included removing special characters, converting text to lowercase, and tokenizing it into individual words.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5.1. Load the two datasets: laws and the custom sentiment lexicon</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>laws <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"SAK Sub Laws.xlsx"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>lexicon <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"custom_sentiment_lexicon_2.xlsx"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 5.2. Clean and standardize the text of each law</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>laws_clean <span class="ot">&lt;-</span> laws <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Law_Text =</span> <span class="fu">replace_non_ascii</span>(Law_Text),           <span class="co"># Remove strange/non-standard characters</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Law_Text =</span> <span class="fu">tolower</span>(Law_Text),                     <span class="co"># Make all text lowercase</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Law_Text =</span> <span class="fu">str_replace_all</span>(Law_Text, <span class="st">"[^a-z</span><span class="sc">\\</span><span class="st">s]"</span>, <span class="st">" "</span>),  <span class="co"># Remove punctuation and numbers</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Law_Text =</span> <span class="fu">str_squish</span>(Law_Text)                   <span class="co"># Remove extra spaces between words</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 5.3. Break each law into individual words (tokens)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>laws_tokenized <span class="ot">&lt;-</span> laws_clean <span class="sc">%&gt;%</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(<span class="at">output =</span> term, <span class="at">input =</span> Law_Text, <span class="at">token =</span> <span class="st">"words"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I then matched the tokenized words from each law with terms in the sentiment lexicon to assign each word a theme-based sentiment label.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5.4. Match each word from the laws to a sentiment label in the lexicon</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>coded_laws <span class="ot">&lt;-</span> laws_tokenized <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(lexicon, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"term"</span> <span class="ot">=</span> <span class="st">"word"</span>)) <span class="sc">%&gt;%</span>    <span class="co"># Only keep words that are in the lexicon</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(State, Pillars_Achieved, Law_Name, Law_Year, term, sentiment)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 5.5. Count how many times each sentiment appears across all laws</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>sentiment_counts <span class="ot">&lt;-</span> coded_laws <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sentiment, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This plot shows the frequency of each sentiment category found across all state laws, giving a sense of which themes are most prevalent.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5.6. Visualize the frequency of each sentiment category in a bar chart</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sentiment_counts, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(sentiment, n), <span class="at">y =</span> n, <span class="at">fill =</span> sentiment)) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Frequency of Sentiment Categories in SAK Laws"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Sentiment Category"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Count of Terms"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Datasci_files/figure-html/plot_sentiment_counts-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I then created binary indicators to represent whether each law used survivor, trauma-informed, or directive language. These were coded as 1 if any words from the corresponding sentiment category were present in the law and 0 if not. This presence/absence approach was used to avoid over-weighting laws with longer text or redundant phrasing and to simplify interpretation in the regression models. For example, a single mention of trauma-informed principles was sufficient to classify a law as trauma-informed. These variables were then merged with the outcome data on pillar achievement.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Survivor_vs_Victim</td>
+<td>binary</td>
+<td>1 = survivor language present</td>
+</tr>
+<tr class="even">
+<td>TraumaInformed</td>
+<td>binary</td>
+<td>1 = trauma-informed language</td>
+</tr>
+<tr class="odd">
+<td>Directive_vs_Permissive</td>
+<td>binary</td>
+<td>1 = directive language</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5.7. Count the number of terms in each sentiment category per state and create binary (1/0) indicators for each theme per state</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>state_summary <span class="ot">&lt;-</span> coded_laws <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(State, sentiment) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sentiment, <span class="at">values_from =</span> n, <span class="at">values_fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Survivor_vs_Victim =</span> <span class="fu">if_else</span>(Survivor <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">TraumaInformed =</span> <span class="fu">if_else</span>(<span class="st">`</span><span class="at">Trauma-Informed</span><span class="st">`</span> <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Directive_vs_Permissive =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      Directive <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      Permissive <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_real_</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 5.8. Merge theme data with outcomes (Pillars Achieved) for analysis</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>model_data <span class="ot">&lt;-</span> laws_clean <span class="sc">%&gt;%</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(State, Pillars_Achieved) <span class="sc">%&gt;%</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(state_summary, <span class="at">by =</span> <span class="st">"State"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This step flags any state that was missing theme coding, which was used as a control variable in the regression models.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable indicating if theme data is missing for a state</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>model_data_prepped <span class="ot">&lt;-</span> model_data <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">MissingThemes =</span> <span class="fu">if_else</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">is.na</span>(Survivor_vs_Victim) <span class="sc">|</span> <span class="fu">is.na</span>(TraumaInformed) <span class="sc">|</span> <span class="fu">is.na</span>(Directive_vs_Permissive),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span>, <span class="dv">0</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-6-create-a-case-by-case-matrix-and-step-7-analyze-it" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-create-a-case-by-case-matrix-and-step-7-analyze-it">Step 6: Create a Case-by-Case Matrix and Step 7: Analyze It</h3>
+<p>I ran two regression models—one to test the impact of theme presence on reform outcomes, and another to assess whether having a law at all mattered.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the effect of each theme on Pillars Achieved</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>theme_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  Pillars_Achieved <span class="sc">~</span> Survivor_vs_Victim <span class="sc">+</span> TraumaInformed <span class="sc">+</span> Directive_vs_Permissive,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> model_data_prepped</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(theme_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Pillars_Achieved ~ Survivor_vs_Victim + TraumaInformed + 
+    Directive_vs_Permissive, data = model_data_prepped)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.2021 -0.6250  0.3750  0.6037  1.3457 
+
+Coefficients:
+                        Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)               4.6543     0.4835   9.626 4.17e-11 ***
+Survivor_vs_Victim       -0.4229     0.3154  -1.341    0.189    
+TraumaInformed            0.2287     0.3100   0.738    0.466    
+Directive_vs_Permissive   0.7420     0.4962   1.495    0.144    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.9062 on 33 degrees of freedom
+  (13 observations deleted due to missingness)
+Multiple R-squared:  0.146, Adjusted R-squared:  0.06832 
+F-statistic:  1.88 on 3 and 33 DF,  p-value: 0.1522</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test whether missing theme data is related to Pillars Achieved</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>missingness_only_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Pillars_Achieved <span class="sc">~</span> MissingThemes, <span class="at">data =</span> model_data_prepped)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(missingness_only_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Pillars_Achieved ~ MissingThemes, data = model_data_prepped)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.4615 -0.4615  0.1206  0.7027  3.5385 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)     5.2973     0.1853  28.592  &lt; 2e-16 ***
+MissingThemes  -2.8358     0.3633  -7.805 4.35e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.127 on 48 degrees of freedom
+Multiple R-squared:  0.5593,    Adjusted R-squared:  0.5501 
+F-statistic: 60.91 on 1 and 48 DF,  p-value: 4.351e-10</code></pre>
+</div>
+</div>
+<p>The chart below visualizes the estimated effect of each language theme on the number of pillars a state has achieved. Error bars represent 95% confidence intervals.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot estimated effect of each theme on Pillars Achieved</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(theme_model, <span class="at">conf.int =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span>                      <span class="co"># Get coefficients with confidence intervals</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">!=</span> <span class="st">"(Intercept)"</span>) <span class="sc">%&gt;%</span>                         <span class="co"># Exclude intercept</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(term, estimate), <span class="at">y =</span> estimate)) <span class="sc">+</span>  <span class="co"># Plot coefficients</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Effect of Legal Language Themes and Missingness on Pillars Achieved"</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Predictor"</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Estimated Effect (Linear Coefficient)"</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Datasci_files/figure-html/plot_model_results-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="results-summary" class="level2">
+<h2 class="anchored" data-anchor-id="results-summary">Results Summary</h2>
+<section id="language-themes-alone-did-not-predict-reform" class="level3">
+<h3 class="anchored" data-anchor-id="language-themes-alone-did-not-predict-reform">Language Themes Alone Did Not Predict Reform</h3>
+<p>In the first regression model, I tested whether the presence of survivor-oriented, trauma-informed, or directive language in a state’s SAK law predicted how many of the six End the Backlog pillars the state had achieved. None of the individual themes reached statistical significance at the p &lt; .05 level. However, the direction and magnitude of the coefficients suggest meaningful patterns worth further exploration:</p>
+<ul>
+<li><strong>Directive Language</strong> was associated with a positive increase of approximately 0.74 additional pillars. This suggests that laws with more directive mandates may support stronger implementation, potentially by reducing local discretion and encouraging accountability.</li>
+<li><strong>Trauma-Informed Language</strong> had a small positive association (+0.23), which aligns with the idea that laws acknowledging survivors’ psychological needs may contribute to more comprehensive reform. However, the estimate was not statistically significant.</li>
+<li><strong>Survivor-Oriented Language</strong> was negatively associated with pillar achievement (–0.42), a counterintuitive finding. One explanation could be that such language is more common in symbolic laws passed by states with limited resources or infrastructure for implementation.</li>
+</ul>
+</section>
+<section id="the-impact-of-not-having-a-law-at-all" class="level3">
+<h3 class="anchored" data-anchor-id="the-impact-of-not-having-a-law-at-all">The Impact of Not Having a Law at All</h3>
+<p>In the second model, I examined whether simply having a SAK submission law (regardless of its language) made a difference in pillar adoption. The results were much more robust:</p>
+<ul>
+<li>States with no SAK submission law as of January 2025 had <strong>2.84 fewer pillars achieved</strong> on average compared to states with a law.</li>
+<li>This finding was highly statistically significant (p &lt; .001) and accounted for <strong>over 55% of the variance</strong> in state-level reform progress.</li>
+</ul>
+<p>This result underscores the critical role of legislative action itself, even beyond the specifics of language used.</p>
+</section>
+<section id="key-insights" class="level3">
+<h3 class="anchored" data-anchor-id="key-insights">Key Insights</h3>
+<ul>
+<li>Passing a law is a necessary step for advancing comprehensive reform.</li>
+<li>The specific wording of laws may still play a role, particularly in the use of directive and trauma-informed language, but more nuanced research is needed.</li>
+<li>Legal language likely interacts with enforcement mechanisms, funding, advocacy, and training efforts—suggesting that language is just one part of a larger ecosystem required to prevent backlogs and support survivors effectively.</li>
+</ul>
+</section>
+</section>
+<section id="additional-visualizations-by-theme" class="level2">
+<h2 class="anchored" data-anchor-id="additional-visualizations-by-theme">Additional Visualizations by Theme</h2>
+<p>Below are supplementary bar charts that display the most frequently occurring terms within each of the three major themes (Survivor vs.&nbsp;Victim, Trauma-Informed, and Permissive vs.&nbsp;Directive). These plots offer a more granular look at how often specific language is used across state laws and provide further context for interpreting the patterns identified in the sentiment analysis.</p>
+<ul>
+<li>The specific wording of laws may still play a role, particularly in the use of directive and trauma-informed language, but more nuanced research is needed.</li>
+<li>Legal language likely interacts with enforcement mechanisms, funding, advocacy, and training efforts—suggesting that language is just one part of a larger ecosystem required to prevent backlogs and support survivors effectively.</li>
+</ul>
+<section id="survivor-vs-victim-language" class="level3">
+<h3 class="anchored" data-anchor-id="survivor-vs-victim-language">Survivor vs Victim Language</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to only keep words labeled as Survivor or Victim language</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>survivor_victim_terms <span class="ot">&lt;-</span> coded_laws <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sentiment <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Survivor"</span>, <span class="st">"Victim"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sentiment, term, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># View a table of these terms and their counts</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(survivor_victim_terms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 11 × 3
+   sentiment term             n
+   &lt;chr&gt;     &lt;chr&gt;        &lt;int&gt;
+ 1 Survivor  survivor        38
+ 2 Survivor  survivors       10
+ 3 Victim    violation        9
+ 4 Victim    abuse            8
+ 5 Victim    exploitation     3
+ 6 Survivor  healing          2
+ 7 Victim    complainant      2
+ 8 Victim    injury           2
+ 9 Survivor  empowered        1
+10 Survivor  growth           1
+11 Victim    harassment       1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart comparing the frequency of Survivor vs. Victim terms</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(survivor_victim_terms, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(term, n), <span class="at">y =</span> n, <span class="at">fill =</span> sentiment)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">TRUE</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Survivor vs. Victim Language in SAK Laws"</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Term"</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Sentiment Category"</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Datasci_files/figure-html/Visiualize Themes-Survivor-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="trauma-informed-language" class="level3">
+<h3 class="anchored" data-anchor-id="trauma-informed-language">Trauma-Informed Language</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep only terms labeled as Trauma-Informed</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>trauma_terms <span class="ot">&lt;-</span> coded_laws <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sentiment <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Trauma-Informed"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sentiment, term, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># View the terms and their counts</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(trauma_terms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  sentiment       term              n
+  &lt;chr&gt;           &lt;chr&gt;         &lt;int&gt;
+1 Trauma-Informed safety           55
+2 Trauma-Informed control           8
+3 Trauma-Informed privacy           2
+4 Trauma-Informed compassionate     1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar chart of Trauma-Informed terms</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trauma_terms, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(term, n), <span class="at">y =</span> n, <span class="at">fill =</span> sentiment)) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Trauma-Informed Language in SAK Laws"</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Term"</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequency"</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Datasci_files/figure-html/Visualize Themes - Trauma-Informed-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="permissive-vs-directive-language" class="level3">
+<h3 class="anchored" data-anchor-id="permissive-vs-directive-language">Permissive vs Directive Language</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to include only Permissive and Directive language</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>perm_dir_terms <span class="ot">&lt;-</span> coded_laws <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sentiment <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Permissive"</span>, <span class="st">"Directive"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sentiment, term, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># View table of terms</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(perm_dir_terms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 3
+   sentiment  term            n
+   &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;
+ 1 Permissive may           144
+ 2 Directive  must           77
+ 3 Permissive request        65
+ 4 Directive  required       59
+ 5 Permissive appropriate    58
+ 6 Directive  ensure         29
+ 7 Directive  requirement    20
+ 8 Permissive allow          14
+ 9 Directive  requires       12
+10 Permissive should         12
+11 Directive  will           10
+12 Permissive can            10
+13 Directive  mandatory       8
+14 Permissive could           7
+15 Directive  duty            5
+16 Permissive entitled        3
+17 Permissive permit          3
+18 Permissive authorize       2
+19 Permissive encourage       2
+20 Directive  enforce         1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar chart of Permissive vs. Directive language terms</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(perm_dir_terms, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(term, n), <span class="at">y =</span> n, <span class="at">fill =</span> sentiment)) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">TRUE</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Permissive vs. Directive Language in SAK Laws"</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Term"</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Sentiment Category"</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Datasci_files/figure-html/Visualize Themes - Permissive vs Directive-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Bernard, H. R., Wutich, A., &amp; Ryan, G. W. (2017). <em>Analyzing Qualitative Data: Systematic Approaches</em> (2nd ed.). SAGE Publications.</li>
+<li>Silge, J., &amp; Robinson, D. (2017). <em>Text Mining with R: A Tidy Approach</em>. O’Reilly Media. how specific language contributes to the overall themes, I generated additional visualizations. These charts show the most commonly used terms for each sentiment category and help clarify which words most frequently contributed to theme classification. This breakdown supports both transparency and interpretability of the qualitative coding process.</li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
