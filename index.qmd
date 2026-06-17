@@ -1,24 +1,33 @@
 ---
-title: "Mandi Urbizo-Haukjaer"
+title: "Mandi Urbizo-Haukjaer, Ph.D."
 format: html
 ---
 
 :::: {style="display: flex; align-items: center; flex-direction: row-reverse;"}
-![](images/37660E7C-4F6F-4C07-9769-F0553B182BE7.jpeg){alt="Mandi's Photo" style="margin-left: 40px;" fig-alt="Mandi's Photo" width="1000px"}
+![](images/37660E7C-4F6F-4C07-9769-F0553B182BE7.jpeg){alt="Mandi's Photo" style="margin-left: 40px;" fig-alt="Mandi's Photo" width="800px"}
+
+
 
 <div>
-
-Mandi Urbizo-Haukjaer is a doctoral candidate in Community and Prevention Research at the University of Illinois Chicago, with a minor in Quantitative Statistics. She holds an M.A. in Applied Psychology from the University of Cincinnati and graduate certificates in Women, Gender, and Sexuality Studies, and Applied Behavioral Analysis. Mandi’s research focuses on improving systems that respond to gender-based violence. She has experience conducting research on topics such as sexual assault response systems and the impact of neoliberal ideologies on public perceptions of gender violence.
+Mandi Urbizo-Haukjaer is a quantitative researcher and analyst with expertise in advanced statistical methods, program evaluation, survey research, and applied social science. She earned her Ph.D. in Community Psychology with a minor in Quantitative Statistics from the University of Illinois Chicago. She also holds an M.A. in Applied Psychology from the University of Cincinnati with graduate certificates in Women, Gender, and Sexuality Studies and Applied Behavior Analysis.
 
 </div>
 ::::
-
 :::: {style="display: flex; align-items: center; flex-direction: row-reverse;"}
 <div>
 
-In addition to her research, Mandi has consulted with organizations like the Illinois Coalition Against Sexual Assault (ICASA) to evaluate programs and deliver data-driven insights. She has also designed and facilitated workshops and has presented her work at several conferences. Mandi excels at translating complex statistical methods, such as structural equation modeling and mixed-effects modeling, into accessible language for diverse audiences. Her work aims to promote equity, advocate for marginalized communities, and foster meaningful systemic change.
+Mandi’s work centers on using data to understand complex social issues, evaluate programs and policies, and inform decision-making. Her research has examined topics including gender-based violence, higher education, student success, financial wellness, and the effectiveness of public policies and systems. She has extensive experience working with large-scale quantitative and qualitative datasets, employing methods such as mixed-effects modeling, interrupted time series analysis, structural equation modeling, survey analytics, and program evaluation.
 
 </div>
 ::::
+<div>
+
+Beyond academia, Mandi has partnered with nonprofits and community organizations to conduct assessments, evaluate initiatives, and translate research findings into actionable recommendations. She is passionate about making data accessible to diverse audiences and helping organizations leverage evidence to improve outcomes, advance equity, and drive meaningful change.
+
+<div>
+
+Mandi is currently exploring opportunities in research, analytics, program evaluation, and data-driven strategy across higher education, nonprofit, public, and private sector organizations.
+
+<div>
 
 ![](images/MUH%20CV.pdf){fig-align="center" width="9in" height="7in"}
